@@ -32,4 +32,15 @@ RESET="\[\033[0m\]"
 
 source /usr/share/git/git-prompt.sh
 
-PS1="${GREEN}💻 \u${YELLOW}@\h ${BLUE}\w ${MAGENTA}\$(__git_ps1 '🌿 %s')\n${CYAN}➤ ${RESET}"
+# Command Status Function
+function prompt_command {
+    EXIT="$?"
+    if [ $EXIT -eq 0 ]; then
+        STATUS="${GREEN}✔"
+    else
+        STATUS="${RED}✘ ($EXIT)"
+    fi
+    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}\$(__git_ps1 '🌿 %s')\n${STATUS} ${C5}➤ ${RESET}"
+}
+
+PROMPT_COMMAND=prompt_command
