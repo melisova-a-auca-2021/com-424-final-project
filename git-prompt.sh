@@ -27,6 +27,9 @@ C7="\[\033[38;5;202m\]"  # Orange Red
 C8="\[\033[38;5;226m\]"  # Bright Yellow
 C9="\[\033[38;5;250m\]"  # Light Gray
 
+# Get current date and time
+NOW_DATE="$(date +%F)"       # 2025-05-06
+NOW_TIME="$(date +%T)"       # 16:45:30
 
 RESET="\[\033[0m\]"
 
@@ -60,7 +63,7 @@ function prompt_command {
     fi
 
     # Final PS1 value
-    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH}\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
+    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH} ${C6}📅 $NOW_DATE ⏰ $NOW_TIME\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
 }
 
 PROMPT_COMMAND=prompt_command
