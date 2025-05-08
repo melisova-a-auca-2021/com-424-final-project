@@ -30,14 +30,15 @@ C9="\[\033[38;5;250m\]"  # Light Gray
 
 RESET="\[\033[0m\]"
 
-source /usr/share/git/git-prompt.sh
+if [ -f "/etc/profile.d/git-prompt.sh" ]; then
+    source /etc/profile.d/git-prompt.sh
+fi
 
 # Command Status Function
 function prompt_command {
-
-    # Exit status
+    # Exit status of last command
     EXIT="$?"
-    if [ $EXIT -eq 0 ]; then
+    if [ "$EXIT" -eq 0 ]; then
         STATUS="${GREEN}✔"
     else
         STATUS="${RED}✘ ($EXIT)"
@@ -51,7 +52,15 @@ function prompt_command {
         JOBS=""
     fi
 
-    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}\$(__git_ps1 '🌿 %s')\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
+    # Git branch info (only if available)
+    if type __git_ps1 &> /dev/null; then
+        GIT_BRANCH="$(__git_ps1 '🌿 %s')"
+    else
+        GIT_BRANCH=""
+    fi
+
+    # Final PS1 value
+    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH}\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
 }
 
 PROMPT_COMMAND=prompt_command
