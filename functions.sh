@@ -29,3 +29,10 @@ get_git_branch() {
         __git_ps1 '🌿 %s'
     fi
 }
+
+# Python virtualenv
+get_venv() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "🐍 (${VIRTUAL_ENV##*/})"
+    fi
+}
