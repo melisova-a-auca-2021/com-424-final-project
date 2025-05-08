@@ -34,13 +34,24 @@ source /usr/share/git/git-prompt.sh
 
 # Command Status Function
 function prompt_command {
+
+    # Exit status
     EXIT="$?"
     if [ $EXIT -eq 0 ]; then
         STATUS="${GREEN}✔"
     else
         STATUS="${RED}✘ ($EXIT)"
     fi
-    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}\$(__git_ps1 '🌿 %s')\n${STATUS} ${C5}➤ ${RESET}"
+
+    # Background job count
+    JOBS_COUNT=$(jobs -p | wc -l)
+    if [ "$JOBS_COUNT" -gt 0 ]; then
+        JOBS="${YELLOW}🎯 ${JOBS_COUNT} job(s)"
+    else
+        JOBS=""
+    fi
+
+    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}\$(__git_ps1 '🌿 %s')\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
 }
 
 PROMPT_COMMAND=prompt_command
