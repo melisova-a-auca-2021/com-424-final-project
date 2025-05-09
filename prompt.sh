@@ -11,8 +11,13 @@ prompt_command() {
     local NOW_TIME=$(date +%T)
 
     local LINE="${BRIGHT_BLUE}────────────────────────────────────────────${RESET}"
+    local K8S_CONTEXT=$(kubectl config current-context 2>/dev/null)
+    local AWS_PROFILE_DISPLAY=${AWS_PROFILE:-default}
 
-    PS1="${C1}M-; \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH} ${C6}~E $NOW_DATE ⏰ $NOW_TIME\n${STATUS} ${JOBS}\n${LINE}\n${C5}➤ ${RESET}"
+    PS1="${C1}M-; \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH} ${C6}${VENV} ${C8}📅 $NOW_DATE ⏰ $NOW_TIME\n"
+    PS1+="${C9}⎈ ${K8S_CONTEXT} ${C7}☁️ ${AWS_PROFILE_DISPLAY}\n"
+    PS1+="${STATUS} ${JOBS}\n${LINE}\n${C5}➤ ${RESET}"
 }
 
 PROMPT_COMMAND=prompt_command
+
