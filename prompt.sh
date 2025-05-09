@@ -10,7 +10,9 @@ prompt_command() {
     local NOW_DATE=$(date +%F)
     local NOW_TIME=$(date +%T)
 
-    PS1="${C1}💻 \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH} ${C6}📅 $NOW_DATE ⏰ $NOW_TIME ${MAGENTA}${VENV}\n${STATUS} ${JOBS} ${C5}➤ ${RESET}"
+    local LINE="${BRIGHT_BLUE}────────────────────────────────────────────${RESET}"
+
+    PS1="${C1}M-; \u${C2}@\h ${C3}\w ${C4}${GIT_BRANCH} ${C6}~E $NOW_DATE ⏰ $NOW_TIME\n${STATUS} ${JOBS}\n${LINE}\n${C5}➤ ${RESET}"
 }
 
 PROMPT_COMMAND=prompt_command
