@@ -1,5 +1,9 @@
 # com-424-final-project – Custom PS1 Prompt 🖥️✨
 
+### 🎥 Video Presentation
+
+📺 [Watch on Google Drive](https://drive.google.com/file/d/18kYsP6_qSX76vIxhVbl91MzXS7JAAiLG/view?usp=sharing)
+
 This project is about customizing the **Linux terminal prompt (PS1)** to make it more informative, visually appealing, and useful for developers. We enhanced it using:
 
 - ✅ **Username & hostname**
