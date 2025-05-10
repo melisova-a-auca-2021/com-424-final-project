@@ -21,6 +21,7 @@ This project is about customizing the **Linux terminal prompt (PS1)** to make it
 | `functions.sh`  | Status, jobs, git, venv helpers |
 | `prompt.sh`     | PS1 construction logic |
 | `install.sh`    | One-click installer to apply prompt |
+| `uninstall.sh`  | One-click uninstaller to remove prompt |
 | `README.md`     | Project documentation |
 
 ---
@@ -31,5 +32,13 @@ This project is about customizing the **Linux terminal prompt (PS1)** to make it
 2. Run the installer:
 
 ```bash
-chmod +x install.sh
+chmod +x install.sh 
 ./install.sh
+```
+
+3. Remove the installer:
+
+```bash
+chmod +x uninstall.sh
+./uninstall.sh
+```
